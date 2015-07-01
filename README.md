@@ -16,7 +16,7 @@ Start iTunes and [Charles](http://www.charlesproxy.com) (or another intercepting
 Next, run `python3 insert-songs.py` and go grab a coffee. You're songs are now being imported into Apple Music.
 
 
-## Problems
+## Current issues
 
 ### API limit rate
 Apple Music doesn't like it when we're adding ~50 songs in a few minutes. If we do so, the API responds to all further request with `403 Too many requests`. After this, you're blocked from the API for an undetermined amount of time. We're currently trying to avoid this by sleeping 5 seconds after each request. As I'm currently blocked myself (pro-tip: 1 second delay is too low), I don't know if this long enough to prevent the API from blocking us
