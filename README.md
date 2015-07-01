@@ -12,7 +12,7 @@ If you want to export you whole Spotify library, simply create a new playlist ca
 In order to add songs to our Apple Music library, we need their Apple Music identifier. Running `python3 retrieve-identifiers.py` will use the *spotify.csv* file to create a new file *itunes.csv* with each line consisting of the Apple Music identifier of a song in your Spotify library.
 
 ### 3. Use an intercepting proxy to retrieve the Apple Music request headers
-Start iTunes and [Charles](http://www.charlesproxy.com) (or another intercepting proxy you like). Make sure SSL Proxying is enabled and working correctly. Next, select a random song on Apple Music you don't have in your library yet, right click and choose 'Add to library'. If everything went well, you're now able to view all the request headers in Charles of a request to `https://ld-4.itunes.apple.com/WebObjects/MZDaap.woa/daap/databases/1/cloud-add`. We're only interested in `Cookie`. Copy the value of this header and paste it in `insert-songs.py` on line *31*.  
+Start iTunes and [Charles](http://www.charlesproxy.com) (or another intercepting proxy you like). Make sure SSL Proxying is enabled and working correctly. Next, select a random song on Apple Music you don't have in your library yet, right click and choose 'Add to library'. If everything went well, you're now able to view all the request headers in Charles of a request to `https://ld-4.itunes.apple.com/WebObjects/MZDaap.woa/daap/databases/1/cloud-add`. We're only interested in `Cookie`, `X-Dsid` and `X-Guid`. Copy the value of these header and paste them in the appropriate place  in `insert-songs.py` (line *29* and further).  
 Next, run `python3 insert-songs.py` and go grab a coffee. You're songs are now being imported into Apple Music.
 
 
