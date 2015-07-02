@@ -15,18 +15,27 @@ def retrieve_itunes_identifier(title, artist):
     try:
         response = urllib.request.urlopen(request)
         data = json.loads(response.readall().decode('utf-8'))
+        songs = [result for result in data["storePlatformData"]["lockup"]["results"].values() if result["kind"] == "song"]
         
-        for result in data["storePlatformData"]["lockup"]["results"].values():
-            if result["kind"] == "song" and result["name"].lower() == title.lower() and (result["artistName"].lower() in artist.lower() or artist.lower() in result["artistName"].lower()):
-                return result["id"]
+        # Attempt to match by title & artist
+        for song in songs: 
+            if song["name"].lower() == title.lower() and (song["artistName"].lower() in artist.lower() or artist.lower() in song["artistName"].lower()):
+                return song["id"]
+        
+        # Attempt to match by title if we didn't get a title & artist match
+        for song in songs: 
+            if song["name"].lower() == title.lower():
+                return song["id"]
+
     except:
+        # We don't do any fancy error handling.. Just return None if something went wrong
         return None
 
 
 itunes_identifiers = []
 
 
-with open('spotify.csv') as playlist_file:
+with open('spotify.csv', encoding='utf-8') as playlist_file:
     playlist_reader = csv.reader(playlist_file)
     next(playlist_reader)
 
@@ -41,6 +50,6 @@ with open('spotify.csv') as playlist_file:
             print("{} - {} => Not Found".format(title, artist))
 
 
-with open('itunes.csv', 'w') as output_file:
+with open('itunes.csv', 'w', encoding='utf-8') as output_file:
     for itunes_identifier in itunes_identifiers:
         output_file.write(str(itunes_identifier) + "\n")
