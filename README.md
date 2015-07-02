@@ -23,3 +23,7 @@ Apple Music doesn't like it when we're adding ~50 songs in a few minutes. If we 
 
 ### Missing songs
 The script I'm using to retrieve the Apple Music identifier for a Spotify song is quite basic. It simply compares the title and artist to find out if a Spotify and Apple Music song match. Some songs don't have the exact same title (extraneous spacing for example) in both services. This results in the script failing to retrieve an identifier for some songs.
+
+### Terminal encoding
+Some users are reporting errors like `UnicodeEncodeError: 'ascii' codec can't encode character '\xd8' in ...` when running the scripts. The problem here is that Python is trying to convert UTF-8 characters to ASCII to print them to standard output. This can be solved by setting the `PYTHONIOENCODING` environment variable to `utf-8`.  
+In Bash, simply call the scripts like this: `PYTHONIOENCODING=utf-8 python3 retrieve-identifiers.py` and `PYTHONIOENCODING=utf-8 python3 insert-songs.Py`
