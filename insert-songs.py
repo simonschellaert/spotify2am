@@ -45,6 +45,6 @@ with open('itunes.csv') as itunes_identifiers_file:
             add_song(itunes_identifier)
             print("Successfuly inserted a song!")
             # Try playing with the interval here to circumvent the API rate limit
-            time.sleep(12)
+            time.sleep(30)
         except Exception as e:
             print("Something went wrong while inserting " + str(itunes_identifier) + " : " + str(e))
