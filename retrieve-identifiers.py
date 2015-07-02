@@ -14,7 +14,7 @@ def retrieve_itunes_identifier(title, artist):
 
     try:
         response = urllib.request.urlopen(request)
-        data = json.loads(response.readall().decode('utf-8'))
+        data = json.loads(response.read().decode('utf-8'))
         songs = [result for result in data["storePlatformData"]["lockup"]["results"].values() if result["kind"] == "song"]
         
         # Attempt to match by title & artist
