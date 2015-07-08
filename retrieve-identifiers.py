@@ -2,6 +2,8 @@ import csv
 import struct
 import urllib.parse, urllib.request
 import json
+import signal
+import sys
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -49,7 +51,12 @@ itunes_identifiers = []
 
 output_file = open(args.output_filename, 'w', encoding='utf-8')
 
-with open('spotify.csv', encoding='utf-8') as playlist_file:
+def signal_handler(signal, frame):
+    output_file.close()
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 i = 0
 skip = int(args.skip)
 with open(args.input_filename, encoding='utf-8') as playlist_file:
