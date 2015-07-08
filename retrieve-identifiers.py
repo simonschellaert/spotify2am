@@ -65,7 +65,7 @@ with open(args.input_filename, encoding='utf-8') as playlist_file:
 
         if itunes_identifier:
             itunes_identifiers.append(itunes_identifier)
-            print("{} - {} => {}".format(title, artist, itunes_identifier))
             output_file.write(str(itunes_identifier) + "\n")
+            print("{}. {} - {} => {}".format(i, title, artist, itunes_identifier))
         else:
             print("{}. {} - {} => Not Found".format(i, title, artist))
