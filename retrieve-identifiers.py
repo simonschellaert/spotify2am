@@ -68,9 +68,4 @@ with open(args.input_filename, encoding='utf-8') as playlist_file:
             print("{} - {} => {}".format(title, artist, itunes_identifier))
             output_file.write(str(itunes_identifier) + "\n")
         else:
-            print("{} - {} => Not Found".format(title, artist))
-
-
-with open('itunes.csv', 'w', encoding='utf-8') as output_file:
-    for itunes_identifier in itunes_identifiers:
-        output_file.write(str(itunes_identifier) + "\n")
+            print("{}. {} - {} => Not Found".format(i, title, artist))
