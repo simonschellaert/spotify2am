@@ -5,6 +5,8 @@ import json
 import argparse
 
 parser = argparse.ArgumentParser()
+parser.add_argument("-s", "--skip", dest="skip",
+                  help="Amount of lines to skip from the input file")
 parser.add_argument("-i",
                   dest="input_filename",
                   help="Input file (CSV)")
@@ -48,12 +50,17 @@ itunes_identifiers = []
 output_file = open(args.output_filename, 'w', encoding='utf-8')
 
 with open('spotify.csv', encoding='utf-8') as playlist_file:
+i = 0
+skip = int(args.skip)
 with open(args.input_filename, encoding='utf-8') as playlist_file:
     playlist_reader = csv.reader(playlist_file)
     next(playlist_reader)
 
     for row in playlist_reader:
         title, artist = row[1], row[2]
+        i += 1
+        if i < skip:
+            continue
         itunes_identifier = retrieve_itunes_identifier(title, artist)
 
         if itunes_identifier:
