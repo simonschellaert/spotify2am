@@ -2,6 +2,17 @@ import csv
 import struct
 import urllib.parse, urllib.request
 import json
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-i",
+                  dest="input_filename",
+                  help="Input file (CSV)")
+parser.add_argument("-o",
+                  dest="output_filename",
+                  help="Output file (CSV)")
+
+args = parser.parse_args()
 
 
 def retrieve_itunes_identifier(title, artist):
@@ -34,8 +45,10 @@ def retrieve_itunes_identifier(title, artist):
 
 itunes_identifiers = []
 
+output_file = open(args.output_filename, 'w', encoding='utf-8')
 
 with open('spotify.csv', encoding='utf-8') as playlist_file:
+with open(args.input_filename, encoding='utf-8') as playlist_file:
     playlist_reader = csv.reader(playlist_file)
     next(playlist_reader)
 
@@ -46,6 +59,7 @@ with open('spotify.csv', encoding='utf-8') as playlist_file:
         if itunes_identifier:
             itunes_identifiers.append(itunes_identifier)
             print("{} - {} => {}".format(title, artist, itunes_identifier))
+            output_file.write(str(itunes_identifier) + "\n")
         else:
             print("{} - {} => Not Found".format(title, artist))
 
