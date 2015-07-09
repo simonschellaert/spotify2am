@@ -7,13 +7,15 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-s", "--skip", dest="skip",
+parser.add_argument("-s", "--skip", dest="skip", default=0,
                   help="Amount of lines to skip from the input file")
 parser.add_argument("-i",
                   dest="input_filename",
+                  default="spotify.csv",
                   help="Input file (CSV)")
 parser.add_argument("-o",
                   dest="output_filename",
+                  default="itunes.csv",
                   help="Output file (CSV)")
 
 args = parser.parse_args()
