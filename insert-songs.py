@@ -16,17 +16,17 @@ def add_song(itunes_identifier):
     data = construct_request_body(int(time.time()), itunes_identifier)
 
     headers = {
-        "X-Apple-Store-Front" : "143446-10,32 ab:rSwnYxS0",
         "Client-iTunes-Sharing-Version" : "3.12",
         "Accept-Language" : "nl-nl, nl;q=0.83, fr-fr;q=0.67, fr;q=0.50, en-us;q=0.33, en;q=0.17",
         "Client-Cloud-DAAP-Version" : "1.0/iTunes-12.2.0.145",
         "Accept-Encoding" : "gzip",
         "X-Apple-itre" : "0",
         "Client-DAAP-Version" : "3.13",
-        "User-Agent" : "iTunes/12.2 (Macintosh; OS X 10.10.4) AppleWebKit/0600.7.12",
         "Connection" : "keep-alive",
         "Content-Type" : "application/x-dmap-tagged",
         # Replace the values of the next three headers with the values you intercepted
+        "User-Agent" : "**REPLACE THIS**",
+        "X-Apple-Store-Front" : "**REPLACE THIS**",
         "X-Dsid" : "**REPLACE THIS**",
         "Cookie" : "**REPLACE THIS**", 
         "X-Guid" : "**REPLACE THIS**",
