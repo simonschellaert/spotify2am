@@ -38,7 +38,6 @@ def add_song(itunes_identifier):
     request = urllib.request.Request("https://ld-8.itunes.apple.com/WebObjects/MZDaap.woa/daap/databases/1/cloud-add", data, headers)
     urllib.request.urlopen(request)
 
-
 with open('itunes.csv') as itunes_identifiers_file:
     for line in itunes_identifiers_file:
         itunes_identifier = int(line)
