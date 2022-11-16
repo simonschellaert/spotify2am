@@ -16,14 +16,16 @@ def add_song(itunes_identifier):
     data = construct_request_body(int(time.time()), itunes_identifier)
 
     headers = {
-        "X-Apple-Store-Front" : "143446-10,32 ab:rSwnYxS0",
-        "Client-iTunes-Sharing-Version" : "3.12",
-        "Accept-Language" : "nl-nl, nl;q=0.83, fr-fr;q=0.67, fr;q=0.50, en-us;q=0.33, en;q=0.17",
-        "Client-Cloud-DAAP-Version" : "1.0/iTunes-12.2.0.145",
+        "Host" : "ld-8.itunes.apple.com:443",
+        "X-Apple-Private-Listening"	: "false",
+        "X-Apple-Store-Front" : "143465-2,42",
+        "Client-iTunes-Sharing-Version" : "3.16",
+        "Accept-Language" : "zh-Hans-CN;q=1.0",
+        "Client-Cloud-DAAP-Version" : "1.3/AMPLibraryAgent-1.0.6.10",
         "Accept-Encoding" : "gzip",
         "X-Apple-itre" : "0",
         "Client-DAAP-Version" : "3.13",
-        "User-Agent" : "iTunes/12.2 (Macintosh; OS X 10.10.4) AppleWebKit/0600.7.12",
+        "User-Agent" : "AMPLibraryAgent/1.0.6 (Macintosh; OS X 10.15.7) AppleWebKit/609.4.1.1.1 build/10 (dt:1)",
         "Connection" : "keep-alive",
         "Content-Type" : "application/x-dmap-tagged",
         # Replace the values of the next three headers with the values you intercepted
@@ -33,9 +35,8 @@ def add_song(itunes_identifier):
         "Content-Length" : "77"
     }
 
-    request = urllib.request.Request("https://ld-4.itunes.apple.com/WebObjects/MZDaap.woa/daap/databases/1/cloud-add", data, headers)
+    request = urllib.request.Request("https://ld-8.itunes.apple.com/WebObjects/MZDaap.woa/daap/databases/1/cloud-add", data, headers)
     urllib.request.urlopen(request)
-
 
 with open('itunes.csv') as itunes_identifiers_file:
     for line in itunes_identifiers_file:
