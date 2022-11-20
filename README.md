@@ -1,4 +1,5 @@
 # Spotify to Apple Music
+## Based on the work of [@simonschellaert](https://github.com/simonschellaert/spotify2am)
 Some simple Python 3 scripts to help you into importing your existing Spotify library into Apple Music.  
 **Work in progress !**
 
