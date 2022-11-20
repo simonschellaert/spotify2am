@@ -48,6 +48,10 @@ with open('spotify.csv', encoding='utf-8') as playlist_file:
             print("{} - {} => {}".format(title, artist, itunes_identifier))
         else:
             print("{} - {} => Not Found".format(title, artist))
+            noresult = "{} - {} => Not Found".format(title, artist)
+            with open('noresult.txt', 'a+') as f:
+                f.write(noresult)
+                f.write('\n')
 
 
 with open('itunes.csv', 'w', encoding='utf-8') as output_file:
