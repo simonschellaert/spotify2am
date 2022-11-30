@@ -1,7 +1,7 @@
 import time
 import pyautogui
 
-print("BEFORE OF ALL! BE SUR TO HAVE COPIED THE FOLLOWING LINE IN THE CLIPBOARD:\n")
+print("BEFORE OF ALL! BE SURE TO HAVE COPIED THE FOLLOWING LINE IN THE CLIPBOARD:\n")
 print('{"data":[{"id":"ID","type":"songs"}]}\n')
 input("If you have copied the line, press enter to continue...")
 
