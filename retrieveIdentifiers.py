@@ -57,3 +57,8 @@ with open('spotify.csv', encoding='utf-8') as playlist_file:
 with open('itunes.csv', 'w', encoding='utf-8') as output_file:
     for itunes_identifier in itunes_identifiers:
         output_file.write(str(itunes_identifier) + "\n")
+
+
+# Developped by @therealmarius on GitHub
+# Based on the work of @simonschellaert on GitHub
+# Github project page: https://github.com/therealmarius/Spotify-2-AppleMusic
