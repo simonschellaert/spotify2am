@@ -16,7 +16,7 @@ And now, all songs that haven't match any Apple Music identifiers are added to a
 * To add our songs to the playlist we want, you'll need to open [Apple Music](https://music.apple.com/login) into [Firefox](https://www.mozilla.org/firefox/new/) (I use Firefox but you can try to do the same on other browser. But it works for me using Firefox. You'll maybe have to adapt the following steps).
 * When you're logged in open the **Dev Tools** (**Ctrl + Shift + I** or **F12** on Windows and Linux or **Cmd + Opt + I** on macOS). 
 * Then, go the **Network** tab and add a random song to the playlist where you want your Spotify songs. (Using the Apple Music web interface).
-* Look for a POST request to a url like this: `https://amp-api.music.apple.com/v1/me/library/playlists/p.ID/tracks`
+* Look for a POST request to a url like this: `https://amp-api.music.apple.com/v1/me/library/playlists/p.ID/tracks` (`p.ID` stands; of course, for the unique playlist ID. So, don't search for the exact same url! You won't find it.)
 * When you find it, click on it and go to the **Headers** tab.
 * Then, hit the Resend button. It should be on the top right of the **Headers** tab.
 * Here come the tricky part... Hold on, you can do it. Open a terminal and run `python3`. Then, quickly import [pyautogui](https://pypi.org/project/PyAutoGUI/). (Make sure you have it installed before)
