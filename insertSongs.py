@@ -1,4 +1,5 @@
 import time
+import sys
 import pyautogui
 
 print("BEFORE OF ALL! BE SURE TO HAVE COPIED THE FOLLOWING LINE IN THE CLIPBOARD:\n")
@@ -12,8 +13,12 @@ with open('itunes.csv') as itunes_identifiers_file:
         itunes_identifier = int(line)
         print(f"\nAdding song with iTunes identifier {itunes_identifier}...")
         pyautogui.click(<REMPLACE THIS>, <REMPLACE THIS>)
-        pyautogui.hotkey("ctrl", "a")
-        pyautogui.hotkey("ctrl", "v")
+        if sys.platform == "darwin":
+            pyautogui.hotkey("command", "a")
+            pyautogui.hotkey("command", "v")
+        else:
+            pyautogui.hotkey("ctrl", "a")
+            pyautogui.hotkey("ctrl", "v")
         pyautogui.click(<REMPLACE THIS>, <REMPLACE THIS>)
         pyautogui.typewrite(str(itunes_identifier))
         pyautogui.click(<REMPLACE THIS>, <REMPLACE THIS>)
