@@ -6,7 +6,7 @@ print('{"data":[{"id":"ID","type":"songs"}]}\n')
 input("If you have copied the line, press enter to continue...")
 
 with open('itunes.csv') as itunes_identifiers_file:
-    print('Starting in 5 seconds...')
+    print('Please click on your Dev Tools window. Starting in 5 seconds...')
     time.sleep(5)
     for line in itunes_identifiers_file:
         itunes_identifier = int(line)
