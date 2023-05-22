@@ -3,7 +3,10 @@ import sys
 import pyautogui
 
 print("BEFORE CONTINUING, BE SURE YOU HAVE COPIED THE FOLLOWING LINE IN THE CLIPBOARD:\n")
-print('{"data":[{"id":"","type":"songs"}]}\n')
+if sys.platform == "darwin":
+    print('{"data":[{"id":"","type":"songs"}]}\n')
+else:
+    print('{"data":[{"id":"ID","type":"songs"}]}\n')
 input("If you have copied the line, press enter to continue...")
 
 with open('itunes.csv') as itunes_identifiers_file:
