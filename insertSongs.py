@@ -1,8 +1,12 @@
 import time
+import sys
 import pyautogui
 
-print("BEFORE OF ALL! BE SURE TO HAVE COPIED THE FOLLOWING LINE IN THE CLIPBOARD:\n")
-print('{"data":[{"id":"ID","type":"songs"}]}\n')
+print("BEFORE CONTINUING, BE SURE YOU HAVE COPIED THE FOLLOWING LINE IN THE CLIPBOARD:\n")
+if sys.platform == "darwin":
+    print('{"data":[{"id":"","type":"songs"}]}\n')
+else:
+    print('{"data":[{"id":"ID","type":"songs"}]}\n')
 input("If you have copied the line, press enter to continue...")
 
 with open('itunes.csv') as itunes_identifiers_file:
@@ -11,12 +15,16 @@ with open('itunes.csv') as itunes_identifiers_file:
     for line in itunes_identifiers_file:
         itunes_identifier = int(line)
         print(f"\nAdding song with iTunes identifier {itunes_identifier}...")
-        pyautogui.click(<REMPLACE THIS>, <REMPLACE THIS>)
-        pyautogui.hotkey("ctrl", "a")
-        pyautogui.hotkey("ctrl", "v")
-        pyautogui.click(<REMPLACE THIS>, <REMPLACE THIS>)
+        pyautogui.click(<REPLACE THIS>, <REPLACE THIS>)
+        if sys.platform == "darwin":
+            pyautogui.hotkey("command", "a")
+            pyautogui.hotkey("command", "v")
+        else:
+            pyautogui.hotkey("ctrl", "a")
+            pyautogui.hotkey("ctrl", "v")
+        pyautogui.click(<REPLACE THIS>, <REPLACE THIS>)
         pyautogui.typewrite(str(itunes_identifier))
-        pyautogui.click(<REMPLACE THIS>, <REMPLACE THIS>)
+        pyautogui.click(<REPLACE THIS>, <REPLACE THIS>)
         time.sleep(2)
         print("Song added!")
 
