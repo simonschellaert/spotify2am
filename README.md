@@ -21,8 +21,8 @@ And now, all songs that haven't match any Apple Music identifiers are added to a
 * Then, hit the Resend button. It should be on the top right of the **Headers** tab.
 * Here come the tricky part... Hold on, you can do it. Open a terminal and run `python3`. Then, quickly import [pyautogui](https://pypi.org/project/PyAutoGUI/). (Make sure you have it installed before)
 * Back in our browser, in the **Resend request** tab, you should see the payload of the request. Remove the song id (your payload should look like this: {"data":[{"id":"","type":"songs"}]} Please check because this step is important), and put your cursor right beetwen the 2 dobule quotes.
-* In the terminal, run `pyautogui.position()`. It should return a tuple with two numbers. Replace the numbers in the line 14 and in the line 17 with the numbers you got from the terminal.
-* Then, in your browser, put your cursor above the send button, and run the same command in the terminal. Replace the numbers in the line 19 with the numbers you got from the terminal.
+* In the terminal, run `pyautogui.position()`. It should return a tuple with two numbers. Replace the numbers in the line 18 and in the line 25 with the numbers you got from the terminal.
+* Then, in your browser, put your cursor above the send button, and run the same command in the terminal. Replace the numbers in the line 27 with the numbers you got from the terminal.
 
 Now you should be ready to go. Run the following:
 ```bash
