@@ -3,6 +3,53 @@ import struct
 import urllib.parse, urllib.request
 import json
 
+def get_itunes_id(title, artist, album):
+    base_url = "https://itunes.apple.com/search?country=FR&media=music&entity=song&limit=5&term="
+    url = base_url + urllib.parse.quote(title + " " + artist)
+    request = urllib.request.Request(url)
+    try:
+        response = urllib.request.urlopen(request)
+        data = json.loads(response.read().decode('utf-8'))
+        
+        for each in data['results']:
+            
+            #Trying to match with the exact track name, the artist name and the album name
+            if each['trackName'].lower() == title.lower() and each['artistName'].lower() == artist.lower() and each['collectionName'].lower() == album.lower():
+                return each['trackId']
+            
+            #Trying to match with the exact track name and the artist name
+            elif each['trackName'].lower() == title.lower() and each['artistName'].lower() == artist.lower():
+                return each['trackId']
+            
+            #Trying to match with the exact track name and the album name
+            elif each['trackName'].lower() == title.lower() and each['collectionName'].lower() == album.lower():
+                return each['trackId']
+            
+            #Trying to match with the exact track name and the artist name, in the case artist name are different between Spotify and Apple Music
+            elif each['trackName'].lower() == title.lower() and (each["artistName"].lower() in artist.lower() or artist.lower() in each["artistName"].lower()):
+                return each['trackId']
+            
+            #Trying to match with the exact track name and the album name, in the case album name are different between Spotify and Apple Music
+            elif each['trackName'].lower() == title.lower() and (each["collectionName"].lower() in album.lower() or album.lower() in each["collectionName"].lower()):
+                return each['trackId']  
+            
+            #Trying to match with the exact track name
+            elif each['trackName'].lower() == title.lower():
+                return each['trackId']
+            
+            #Trying to match with the track name, in the case track name are different between Spotify and Apple Music
+            elif title.lower() in each['trackName'] or each['trackName'].lower() in title.lower():
+                return each['trackId']
+            
+            # If no match, return the first result
+            else:
+                return print(f'No result for {title} - {artist} - {album}')
+            
+    except:
+        return None
+            
+ 
+
 
 def retrieve_itunes_identifier(title, artist):
     headers = {
