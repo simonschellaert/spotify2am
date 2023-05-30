@@ -1,3 +1,2 @@
-itunes.csv
-spotify.csv
-noresult.txt
+*.csv
+*.txt

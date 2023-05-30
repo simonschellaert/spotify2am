@@ -28,7 +28,6 @@ with open('itunes.csv') as itunes_identifiers_file:
         time.sleep(2)
         print("Song added!")
 
-
 # Developped by @therealmarius on GitHub
 # Based on the work of @simonschellaert on GitHub
 # Github project page: https://github.com/therealmarius/Spotify-2-AppleMusic

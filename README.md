@@ -9,7 +9,11 @@ The first step is getting the songs you want to import into Apple Music into a C
 If you want to export you whole Spotify library, simply create a new playlist called **All** and drag your whole library into it using the Spotify desktop app. You can then export the playlist **All** using **Exportify**. Save the resulting file as **spotify.csv** in the same directory as the directory you cloned this repo into.
 
 ### 2. Match the Spotify songs with their Apple Music identifier
-In order to add songs to our Apple Music playlist, we need their Apple Music identifier. Running `python3 retrieveIdentifiers.py` will use the **spotify.csv** file to create a new file **itunes.csv** with each line consisting of the Apple Music identifier of a song in your Spotify playlist.
+In order to add songs to our Apple Music playlist, we need their Apple Music identifier. All you need to do is to run the following:
+```bash
+python3 getitunesid.py
+```
+It will use the **spotify.csv** file to create a new file **itunes.csv** with each line consisting of the Apple Music identifier of a song in your Spotify playlist.
 And now, all songs that haven't match any Apple Music identifiers are added to a **noresult.txt** file.
 
 ### 3. Open Apple Music in Firefox
@@ -26,7 +30,7 @@ And now, all songs that haven't match any Apple Music identifiers are added to a
 
 Now you should be ready to go. Run the following:
 ```bash
-python3 insertSongs.py
+python3 insertsongs.py
 ```
 
 When the script runs, just select your browser window and wait for the magic to happen.
